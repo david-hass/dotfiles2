@@ -52,6 +52,7 @@ stow -v "${STOW_PACKAGES[@]}"
 
 # packages
 PACKAGES=(
+  "libva-utils"
   "swaync"
   "fuzzel"
   "hyprpaper"
