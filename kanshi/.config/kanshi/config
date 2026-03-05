@@ -1,0 +1,11 @@
+profile undocked {
+    output "Lenovo Group Limited 0x40BA" enable mode 1920x1080@60.02Hz position 0,0 scale 1.25
+}
+
+profile tri-monitor {
+    output eDP-1 disable
+
+    output "Dell Inc. DELL U2518D 3C4YP92CBUDL" enable mode 2560x1440@59.95Hz position 1280,0 scale 1.0
+
+    output "ASUSTek COMPUTER INC ASUS MB166C S6LMTF127831" enable mode 1920x1080@60.00Hz position 3840,0 scale 1.0 transform 270
+}
