@@ -120,9 +120,21 @@ return {
 
     local vue_ls_config = {}
 
+
+    local tinymist_config = {
+      cmd = { "tinymist" },
+      filetypes = { "typst" },
+
+      settings = {
+
+      }
+    }
+
+
     vim.lsp.config('vtsls', vtsls_config)
     vim.lsp.config('vue_ls', vue_ls_config)
-    vim.lsp.enable({ 'vtsls', 'vue_ls' })
+    vim.lsp.config('tinymist', tinymist_config)
+    vim.lsp.enable({ 'vtsls', 'vue_ls', 'tinymist' })
 
 
     vim.lsp.config("jsonls", {
