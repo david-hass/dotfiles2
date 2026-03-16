@@ -2,3 +2,8 @@
 on   = "<Enter>"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on   = [ "<A-d>" ]
+run  = 'shell -- ripdrag "$@"'
+desc = "Drag-and-Drop files from yazi"

@@ -52,6 +52,7 @@ PACKAGES=(
   "swaync"
   "fuzzel"
   "hyprpaper"
+  "hyprshot"
   "chromium"
   "neovim"
   "kanshi"
@@ -75,6 +76,7 @@ sudo pacman -S --needed --noconfirm "${PACKAGES[@]}"
 # aur packages
 paru -S bzmenu --noconfirm --needed
 paru -S visual-studio-code-bin --noconfirm --needed
+paru -S ripdrag --noconfirm --needed
 
 # node/npm
 curl -fsSL https://fnm.vercel.app/install | bash
