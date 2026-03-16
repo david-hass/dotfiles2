@@ -29,29 +29,25 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm stow
 
 # dotfiles
-STOW_PACKAGES=(hypr waybar nvim kanshi)
+STOW_PACKAGES=(hypr waybar nvim kanshi electron)
 DOTFILES_DIR="$HOME/dotfiles"
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "FEHLER: $DOTFILES_DIR nicht gefunden. Repo muss nach ~/dotfiles geklont sein."
   exit 1
 fi
 
-BACKUP_DIR="$HOME/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
-mkdir -p "$BACKUP_DIR"
-
-for d in .config/hypr .config/waybar .config/nvim .config/kanshi; do
-  if [ -e "$HOME/$d" ] && [ ! -L "$HOME/$d" ]; then
-    mkdir -p "$BACKUP_DIR/$(dirname "$d")"
-    mv "$HOME/$d" "$BACKUP_DIR/$d"
-  fi
-done
-
 cd "$DOTFILES_DIR"
 stow -v "${STOW_PACKAGES[@]}"
 
+sudo pacman -Rs dolphin
+rm -rf ~/.local/share/dolphin
+rm -rf ~/.config/dolphinrc
 
 # packages
 PACKAGES=(
+  "zathura"
+  "zathura-pdf-poppler"
+  "yazi"
   "libva-utils"
   "swaync"
   "fuzzel"
@@ -88,6 +84,8 @@ sudo usermod -aG docker "$USER"
 sudo systemctl enable --now docker.service
 
 xdg-settings set default-web-browser firefox.desktop
+
+xdg-mime default org.pwmt.zathura.desktop application/pdf
 
 systemctl --user enable --now ssh-agent.service 2>/dev/null || true
 systemctl --user enable --now ssh-agent.socket 2>/dev/null || true
