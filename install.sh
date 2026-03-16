@@ -29,7 +29,7 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm stow
 
 # dotfiles
-STOW_PACKAGES=(hypr waybar nvim kanshi electron)
+STOW_PACKAGES=(hypr waybar nvim kanshi electron yazi)
 DOTFILES_DIR="$HOME/dotfiles"
 if [ ! -d "$DOTFILES_DIR" ]; then
   echo "FEHLER: $DOTFILES_DIR nicht gefunden. Repo muss nach ~/dotfiles geklont sein."
