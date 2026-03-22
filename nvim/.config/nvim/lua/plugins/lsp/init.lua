@@ -65,7 +65,17 @@ return {
     end
 
     require("mason-lspconfig").setup({
-      ensure_installed = { "vue_ls", "vtsls", "jsonls", "lua_ls", "gopls", "clangd", "hyprls" },
+      ensure_installed = {
+        "vue_ls",
+        "html",
+        "cssls",
+        "vtsls",
+        "jsonls",
+        "lua_ls",
+        "gopls",
+        "clangd",
+        "hyprls"
+      },
     })
 
     ---------------------------------------------------------------------------
@@ -134,7 +144,6 @@ return {
     vim.lsp.config('vtsls', vtsls_config)
     vim.lsp.config('vue_ls', vue_ls_config)
     vim.lsp.config('tinymist', tinymist_config)
-    vim.lsp.enable({ 'vtsls', 'vue_ls', 'tinymist' })
 
 
     vim.lsp.config("jsonls", {
@@ -149,6 +158,23 @@ return {
       },
     })
 
+    vim.lsp.config("html", {
+      cmd = cmd_for("vscode-html-language-server", { "--stdio" }),
+      capabilities = capabilities,
+      root_dir = root_dir_cb,
+
+      init_options = {
+        provideFormatter = true,
+      },
+      filetypes = { "html", "templ" },
+    })
+
+    vim.lsp.config("cssls", {
+      cmd = cmd_for("vscode-css-language-server", { "--stdio" }),
+      capabilities = capabilities,
+      root_dir = root_dir_cb,
+    })
+
     vim.lsp.config("lua_ls",
       { cmd = cmd_for("lua-language-server"), capabilities = capabilities, root_dir = root_dir_cb })
     vim.lsp.config("gopls", { cmd = cmd_for("gopls"), capabilities = capabilities, root_dir = root_dir_cb })
@@ -159,6 +185,8 @@ return {
     -- Enable
     ---------------------------------------------------------------------------
     vim.lsp.enable({
+      "html",
+      "cssls",
       "vtsls",
       "vue_ls",
       "jsonls",
@@ -166,6 +194,7 @@ return {
       "gopls",
       "clangd",
       "hyprls",
+      "tinymist",
     })
   end,
 }
