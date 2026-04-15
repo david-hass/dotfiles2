@@ -53,6 +53,7 @@ PACKAGES=(
   "fuzzel"
   "hyprpaper"
   "hyprshot"
+  "satty"
   "chromium"
   "neovim"
   "kanshi"
